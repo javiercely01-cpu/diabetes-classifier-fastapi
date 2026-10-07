@@ -1,0 +1,38 @@
+2026-10-07 15:38:40 | INFO | diabetes_api | Modelo cargado correctamente desde /home/claude/fastapi_v2/repo/app/model/model.joblib
+2026-10-07 15:38:42 | INFO | diabetes_api | [eab324ac] GET /health
+2026-10-07 15:38:42 | INFO | diabetes_api | [eab324ac] status=200 tiempo=2.04ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [c6c5ae64] GET /model-info
+2026-10-07 15:38:42 | INFO | diabetes_api | [c6c5ae64] status=200 tiempo=1.03ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [3a7da2ac] POST /predict
+2026-10-07 15:38:42 | INFO | diabetes_api | [3a7da2ac] predicción OK: input={'pregnancies': 6, 'glucose': 148.0, 'blood_pressure': 72.0, 'skin_thickness': 35.0, 'insulin': 0.0, 'bmi': 33.6, 'diabetes_pedigree_function': 0.627, 'age': 50} -> Diabetes (p_diabetes=0.803)
+2026-10-07 15:38:42 | INFO | diabetes_api | [3a7da2ac] status=200 tiempo=49.44ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [ec480b54] POST /predict
+2026-10-07 15:38:42 | INFO | diabetes_api | [ec480b54] predicción OK: input={'pregnancies': 1, 'glucose': 85.0, 'blood_pressure': 66.0, 'skin_thickness': 29.0, 'insulin': 0.0, 'bmi': 26.6, 'diabetes_pedigree_function': 0.351, 'age': 31} -> Sin diabetes (p_diabetes=0.127)
+2026-10-07 15:38:42 | INFO | diabetes_api | [ec480b54] status=200 tiempo=26.86ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [5febffd6] POST /predict
+2026-10-07 15:38:42 | INFO | diabetes_api | [5febffd6] predicción OK: input={'pregnancies': 2, 'glucose': 0.0, 'blood_pressure': 0.0, 'skin_thickness': 0.0, 'insulin': 0.0, 'bmi': 0.0, 'diabetes_pedigree_function': 0.5, 'age': 40} -> Diabetes (p_diabetes=0.592)
+2026-10-07 15:38:42 | INFO | diabetes_api | [5febffd6] status=200 tiempo=26.82ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [980986c3] POST /predict
+2026-10-07 15:38:42 | WARNING | diabetes_api | [980986c3] Entrada inválida -> ['body.age: Input should be greater than or equal to 1']
+2026-10-07 15:38:42 | INFO | diabetes_api | [980986c3] status=422 tiempo=0.90ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [0bbf6a93] POST /predict
+2026-10-07 15:38:42 | WARNING | diabetes_api | [0bbf6a93] Entrada inválida -> ['body.bmi: Field required']
+2026-10-07 15:38:42 | INFO | diabetes_api | [0bbf6a93] status=422 tiempo=0.91ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [e2169a8c] POST /predict
+2026-10-07 15:38:42 | WARNING | diabetes_api | [e2169a8c] Entrada inválida -> ['body.glucose: Input should be a valid number, unable to parse string as a number']
+2026-10-07 15:38:42 | INFO | diabetes_api | [e2169a8c] status=422 tiempo=0.76ms
+2026-10-07 15:38:42 | INFO | diabetes_api | [2e69a8d5] GET /stats
+2026-10-07 15:38:42 | INFO | diabetes_api | [2e69a8d5] status=200 tiempo=0.77ms
+2026-10-07 15:39:09 | INFO | diabetes_api | [540b7e22] GET /docs
+2026-10-07 15:39:09 | INFO | diabetes_api | [540b7e22] status=200 tiempo=0.63ms
+2026-10-07 15:39:10 | INFO | diabetes_api | [29fc816e] GET /openapi.json
+2026-10-07 15:39:10 | INFO | diabetes_api | [29fc816e] status=200 tiempo=18.93ms
+2026-10-07 15:39:11 | INFO | diabetes_api | [71cd3970] POST /predict
+2026-10-07 15:39:11 | INFO | diabetes_api | [71cd3970] predicción OK: input={'pregnancies': 6, 'glucose': 148.0, 'blood_pressure': 72.0, 'skin_thickness': 35.0, 'insulin': 0.0, 'bmi': 33.6, 'diabetes_pedigree_function': 0.627, 'age': 50} -> Diabetes (p_diabetes=0.803)
+2026-10-07 15:39:11 | INFO | diabetes_api | [71cd3970] status=200 tiempo=38.36ms
+2026-10-07 15:39:12 | INFO | diabetes_api | [e17f3e08] POST /predict
+2026-10-07 15:39:12 | WARNING | diabetes_api | [e17f3e08] Entrada inválida -> ['body.age: Input should be greater than or equal to 1']
+2026-10-07 15:39:12 | INFO | diabetes_api | [e17f3e08] status=422 tiempo=0.78ms
+2026-10-07 15:39:13 | INFO | diabetes_api | [68612187] GET /stats
+2026-10-07 15:39:13 | INFO | diabetes_api | [68612187] status=200 tiempo=0.95ms
+2026-10-07 15:39:36 | INFO | diabetes_api | Servicio detenido

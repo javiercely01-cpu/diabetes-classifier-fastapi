@@ -1,0 +1,89 @@
+=== 1) GET /health ===
+HTTP/1.1 200 OK
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 35
+content-type: application/json
+x-request-id: eab324ac
+
+{"status":"ok","model_loaded":true}
+
+=== 2) GET /model-info ===
+HTTP/1.1 200 OK
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 378
+content-type: application/json
+x-request-id: c6c5ae64
+
+{"model_type":"RandomForestClassifier (Pipeline con imputación de ceros)","dataset":"Pima Indians Diabetes (768 registros)","feature_names":["Pregnancies","Glucose","BloodPressure","SkinThickness","Insulin","BMI","DiabetesPedigreeFunction","Age"],"target_names":["Sin diabetes","Diabetes"],"accuracy":0.7338,"f1":0.672,"roc_auc":0.8222,"trained_at":"2026-10-07T20:37:47+00:00"}
+
+=== 3) POST /predict - paciente con perfil de riesgo alto ===
+HTTP/1.1 200 OK
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 124
+content-type: application/json
+x-request-id: 3a7da2ac
+
+{"request_id":"3a7da2ac","predicted_class":1,"predicted_label":"Diabetes","probability_diabetes":0.8035,"latency_ms":47.335}
+
+=== 4) POST /predict - paciente con perfil de riesgo bajo ===
+HTTP/1.1 200 OK
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 128
+content-type: application/json
+x-request-id: ec480b54
+
+{"request_id":"ec480b54","predicted_class":0,"predicted_label":"Sin diabetes","probability_diabetes":0.1266,"latency_ms":25.409}
+
+=== 5) POST /predict - valores 0 (dato no medido, se imputa con la mediana) ===
+HTTP/1.1 200 OK
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 124
+content-type: application/json
+x-request-id: 5febffd6
+
+{"request_id":"5febffd6","predicted_class":1,"predicted_label":"Diabetes","probability_diabetes":0.5923,"latency_ms":25.508}
+
+=== 6) POST /predict - error de validación (edad negativa) ===
+HTTP/1.1 422 Unprocessable Content
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 140
+content-type: application/json
+x-request-id: 980986c3
+
+{"detail":[{"type":"greater_than_equal","loc":["body","age"],"msg":"Input should be greater than or equal to 1","input":-3,"ctx":{"ge":1}}]}
+
+=== 7) POST /predict - error (falta el campo bmi) ===
+HTTP/1.1 422 Unprocessable Content
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 210
+content-type: application/json
+x-request-id: 0bbf6a93
+
+{"detail":[{"type":"missing","loc":["body","bmi"],"msg":"Field required","input":{"pregnancies":2,"glucose":120,"blood_pressure":70,"skin_thickness":20,"insulin":80,"diabetes_pedigree_function":0.5,"age":40}}]}
+
+=== 8) POST /predict - error (tipo inválido: glucose como texto) ===
+HTTP/1.1 422 Unprocessable Content
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 152
+content-type: application/json
+x-request-id: e2169a8c
+
+{"detail":[{"type":"float_parsing","loc":["body","glucose"],"msg":"Input should be a valid number, unable to parse string as a number","input":"alta"}]}
+
+=== 9) GET /stats (monitoreo básico) ===
+HTTP/1.1 200 OK
+date: Wed, 07 Oct 2026 20:38:42 GMT
+server: uvicorn
+content-length: 188
+content-type: application/json
+x-request-id: 2e69a8d5
+
+{"started_at":"2026-10-07 15:38:39","total_requests":9,"errors_4xx":3,"errors_5xx":0,"predictions":3,"predictions_by_class":{"Sin diabetes":1,"Diabetes":2},"avg_predict_latency_ms":32.751}

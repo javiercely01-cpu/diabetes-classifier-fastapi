@@ -1,0 +1,22 @@
+{
+  "model_type": "RandomForestClassifier (Pipeline con imputación de ceros)",
+  "dataset": "Pima Indians Diabetes (768 registros)",
+  "feature_names": [
+    "Pregnancies",
+    "Glucose",
+    "BloodPressure",
+    "SkinThickness",
+    "Insulin",
+    "BMI",
+    "DiabetesPedigreeFunction",
+    "Age"
+  ],
+  "target_names": [
+    "Sin diabetes",
+    "Diabetes"
+  ],
+  "accuracy": 0.7338,
+  "f1": 0.672,
+  "roc_auc": 0.8222,
+  "trained_at": "2026-10-07T20:37:47+00:00"
+}

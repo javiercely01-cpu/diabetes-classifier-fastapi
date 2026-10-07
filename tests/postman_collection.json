@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "Diabetes Classifier API",
+    "description": "Colección de Postman para probar el servicio FastAPI del modelo de clasificación de diabetes (Pima).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/health"
+      }
+    },
+    {
+      "name": "Model info",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/model-info"
+      }
+    },
+    {
+      "name": "Predict - riesgo alto (esperado: Diabetes)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/predict",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pregnancies\": 6,\n  \"glucose\": 148,\n  \"blood_pressure\": 72,\n  \"skin_thickness\": 35,\n  \"insulin\": 0,\n  \"bmi\": 33.6,\n  \"diabetes_pedigree_function\": 0.627,\n  \"age\": 50\n}"
+        }
+      }
+    },
+    {
+      "name": "Predict - riesgo bajo (esperado: Sin diabetes)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/predict",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pregnancies\": 1,\n  \"glucose\": 85,\n  \"blood_pressure\": 66,\n  \"skin_thickness\": 29,\n  \"insulin\": 0,\n  \"bmi\": 26.6,\n  \"diabetes_pedigree_function\": 0.351,\n  \"age\": 31\n}"
+        }
+      }
+    },
+    {
+      "name": "Predict - valores 0 (dato no medido)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/predict",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pregnancies\": 2,\n  \"glucose\": 0,\n  \"blood_pressure\": 0,\n  \"skin_thickness\": 0,\n  \"insulin\": 0,\n  \"bmi\": 0,\n  \"diabetes_pedigree_function\": 0.5,\n  \"age\": 40\n}"
+        }
+      }
+    },
+    {
+      "name": "Predict - error 422 (edad negativa)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/predict",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pregnancies\": 2,\n  \"glucose\": 120,\n  \"blood_pressure\": 70,\n  \"skin_thickness\": 20,\n  \"insulin\": 80,\n  \"bmi\": 30,\n  \"diabetes_pedigree_function\": 0.5,\n  \"age\": -3\n}"
+        }
+      }
+    },
+    {
+      "name": "Predict - error 422 (falta bmi)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/predict",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pregnancies\": 2,\n  \"glucose\": 120,\n  \"blood_pressure\": 70,\n  \"skin_thickness\": 20,\n  \"insulin\": 80,\n  \"diabetes_pedigree_function\": 0.5,\n  \"age\": 40\n}"
+        }
+      }
+    },
+    {
+      "name": "Predict - error 422 (glucose como texto)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/predict",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"pregnancies\": 2,\n  \"glucose\": \"alta\",\n  \"blood_pressure\": 70,\n  \"skin_thickness\": 20,\n  \"insulin\": 80,\n  \"bmi\": 30,\n  \"diabetes_pedigree_function\": 0.5,\n  \"age\": 40\n}"
+        }
+      }
+    },
+    {
+      "name": "Stats (monitoreo)",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/stats"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    }
+  ]
+}
