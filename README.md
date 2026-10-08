@@ -1,8 +1,5 @@
 # Despliegue de un modelo de clasificación como servicio web con FastAPI
 
-**Universidad:** Universidad / Facultad de Ingeniería
-**Curso:** Machine Learning
-**Docente:** Profesor del curso
 
 **Integrantes del grupo:**
 - Jeimmy Patricia Valderrama Vásquez
